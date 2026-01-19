@@ -77,15 +77,15 @@ public class Web3WebSocketProvider: Web3Provider, Web3BidirectionalProvider {
         // Timeout in ns
         switch timeout {
         case .seconds(let int):
-            self.timeoutNanoSeconds = UInt64(int * 1_000_000_000)
+            self.timeoutNanoSeconds = UInt64(int) * 1_000_000_000
         case .milliseconds(let int):
-            self.timeoutNanoSeconds = UInt64(int * 1_000_000)
+            self.timeoutNanoSeconds = UInt64(int) * 1_000_000
         case .microseconds(let int):
-            self.timeoutNanoSeconds = UInt64(int * 1_000)
+            self.timeoutNanoSeconds = UInt64(int) * 1_000
         case .nanoseconds(let int):
             self.timeoutNanoSeconds = UInt64(int)
         default:
-            self.timeoutNanoSeconds = UInt64(120 * 1_000_000_000)
+            self.timeoutNanoSeconds = UInt64(120) * 1_000_000_000
         }
 
         self.wsEventLoopGroup = MultiThreadedEventLoopGroup(numberOfThreads: 4)
